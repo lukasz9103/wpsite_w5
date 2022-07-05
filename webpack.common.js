@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const GoogleFontsPlugin = require("@beyonk/google-fonts-webpack-plugin")
 
 module.exports = {
   entry: {
@@ -15,6 +16,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
+    new GoogleFontsPlugin({
+      fonts: [
+        {family: "Roboto", variants: ["400", "700"], display: "block"}
+      ]
+    })
   ],
   module: {
     rules: [

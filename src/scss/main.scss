@@ -1,7 +1,2 @@
-body {
-  background-color: purple;
-}
-
-.test {
-  background: url("../img/sample-image-1.jpg");
-}
+@import "~bootstrap/scss/bootstrap";
+@import "theme";
