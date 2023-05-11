@@ -1,0 +1,28 @@
+:root {
+  --black: #000;
+}
+
+body {
+  background: #fff;
+}
+
+.menu {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: flex-end;
+
+  .menu-item {
+    a {
+      padding: 5px 10px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    &:last-child {
+      a {
+        padding-right: 0;
+      }
+    }
+  }
+}

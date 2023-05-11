@@ -1,10 +1,10 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const GoogleFontsPlugin = require("@beyonk/google-fonts-webpack-plugin")
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
-    app: path.resolve(__dirname, 'src/index.js')
+    app: path.resolve(__dirname, 'src/js/index.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,11 +16,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
-    new GoogleFontsPlugin({
-      fonts: [
-        {family: "Roboto", variants: ["400", "700"], display: "block"}
-      ]
-    })
   ],
   module: {
     rules: [
@@ -43,19 +38,20 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name][ext]',
+          filename: 'font/[name][ext][query]',
         }
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+        exclude: path.resolve(__dirname, 'font'),
         generator: {
-          filename: 'fonts/[name][ext][query]',
-        }
-      },
+          filename: 'img/[name][ext]',
+        },
+      }
     ]
   }
 }
